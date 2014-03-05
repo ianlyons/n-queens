@@ -79,12 +79,26 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      var thisRow = this.get(rowIndex);
+      var sum = 0;
+      for(var i = 0; i < thisRow.length; i++) {
+        sum += thisRow[i];
+      }
+      if ( sum > 1 ) {
+        return true;
+      } 
+      return false; 
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      var allRows = this.rows();
+      var that = this;
+      for(var i = 0; i < allRows.length; i++) {
+        var thisRow = allRows[i];
+        if(that.hasRowConflictAt([i])
+      }
+      return false;
     },
 
 
@@ -94,12 +108,27 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var allRows = this.rows();
+      var sum = 0;
+      _.each(allRows, function(item) {
+        sum += item[colIndex];
+      });
+      if( sum > 1 ) {
+        return true;
+      }
+      return false;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var allRows = this.rows();
+      var that = this;
+      _.each(allRows, function(item, index) {
+        if(that.hasColConflictAt(index)) {
+          return true;
+        }
+      });
+      return false;
     },
 
 
@@ -109,6 +138,20 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+      // var firstIndex = majorDiagonalColumnIndexAtFirstRow;
+      // var allRows = this.rows();
+      // var sum = 0;
+      // var currentRow = 0;
+      // // var this = allRows[0][firstIndex];
+      // // var next = allRows[1][firstIndex+1]
+      // for(var i = firstIndex; i < allRows.length; i++) {
+      //   console.log("Checking index " + i + " on row " + currentRow);
+      //   sum += allRows[currentRow][i];
+      //   currentRow++;
+      // }
+      // if( sum > 1 ) {
+      //   return true;
+      // }
       return false; // fixme
     },
 
